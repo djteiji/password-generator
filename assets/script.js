@@ -7,6 +7,7 @@ var symbolsArr = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "+", "-", "=
 
 var passwordInfoArr
 
+
 function promptUser () {
   passwordInfoArr = [];
   
@@ -33,7 +34,7 @@ function promptUser () {
   if (confirm("Would you like to include special characters in your password?")) {
     passwordInfoArr = passwordInfoArr.concat(symbolsArr);
   } 
-}
+} 
 
 
 function generatePassword() {
@@ -41,9 +42,11 @@ function generatePassword() {
   var password = "";
   for(var i = 0; i < passwordLength; i++) {
     var randomCharacterIndex = Math.floor(Math.random() * passwordInfoArr.length);
-    password = password + passwordInfoArr[randomCharacterIndex];
+    password = password + passwordInfoArr[randomCharacterIndex];  
   } 
+  
   return password;
+  
 }
 
 
@@ -53,13 +56,17 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  
+    var password = generatePassword();
+    
+    var passwordText = document.querySelector("#password");
 
-  var passwordText = document.querySelector("#password");
+    
 
-  passwordText.value = password;
-
+    passwordText.value = password;
 }
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
